@@ -24,7 +24,7 @@ class StreamableList extends Component {
     this.setState({
       refreshData: true,
     }, async () => {
-      let data = await axios.get(`http://ec2-18-216-119-191.us-east-2.compute.amazonaws.com/streamables/${date}`)
+      let data = await axios.get(`http://ec2-18-216-119-191.us-east-2.compute.amazonaws.com/streamablesrecent`)
       this.setState({
         streamables: data.data.sort((a,b) => a.score > b.score ? -1 : 1),
         show: true,

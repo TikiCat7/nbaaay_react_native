@@ -90,7 +90,7 @@ class YoutubeCard extends Component {
                   <View>
                     <View style={{ justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'black', padding: 10, backgroundColor: 'white', marginBottom: 10}}>
                       <TouchableHighlight onPress={() => this.handlePlayerPress(this.props.video.player[0])}>
-                        <View>
+                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25.5 }}
                             source={{ uri: `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${this.props.video.player[0].teamId}/2017/260x190/${this.props.video.player[0].playerId}.png` }}
                               resizeMode='cover'
@@ -101,7 +101,7 @@ class YoutubeCard extends Component {
                     </View>
                     <View style={{ justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'black', padding: 10, backgroundColor: 'white'}}>
                       <TouchableHighlight onPress={() => this.handlePlayerPress(this.props.video.player[1])}>
-                        <View>
+                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25.5 }}
                             source={{ uri: `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/${this.props.video.player[1].teamId}/2017/260x190/${this.props.video.player[1].playerId}.png` }}
                               resizeMode='cover'

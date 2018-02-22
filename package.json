@@ -3,12 +3,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-    "expo": "^23.0.0",
+    "expo": "^25.0.0",
+    "lottie-react-native": "^2.3.2",
     "moment": "^2.20.1",
     "native-base": "^2.3.7",
     "prop-types": "^15.6.0",
-    "react": "16.0.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-23.0.0.tar.gz",
+    "react": "16.2.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-navigation": "^1.0.0-beta.27",
     "xmldom": "^0.1.27"
   }

@@ -106,11 +106,11 @@ const AppTabNavigator = TabNavigator({
         screen: DateModal,
       }
     },
-    {
-      mode: 'modal',
-      headerMode: 'none',
-    }
-  ),
+      {
+        mode: 'modal',
+        headerMode: 'none',
+      }
+    ),
   navigationOptions: {
     tabBarIcon: ({ tintColor }) => (
       <Icon name='calendar' style={{ color: tintColor }} />

@@ -13,9 +13,9 @@ export default class App extends React.Component {
 }
 
 const AppStackNavigator = StackNavigator({
-  Splash: {
-    screen: SplashScreen,
-  },
+  // Splash: {
+  //   screen: SplashScreen,
+  // },
   Main: {
     screen: MainScreen,
     navigationOptions: {

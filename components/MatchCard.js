@@ -1,43 +1,10 @@
 import React, { Component } from 'react';
-import { Font } from 'expo';
+import { Font, Asset } from 'expo';
 import { View, Text, Dimensions, Image, TouchableWithoutFeedback, StyleSheet, Animated} from 'react-native';
 import TRI_CODE_TO_TEAM_NAME from '../utils/triToTeam';
-
+import images from '../utils/teamImages';
 import Animation from 'lottie-react-native';
 import anim from './muzli.json';
-
-const images = {
-  'ATL': require('../assets/images/team-logos/ATL_logo.png'),
-  'BOS': require('../assets/images/team-logos/BOS_logo.png'),
-  'BKN': require('../assets/images/team-logos/BKN_logo.png'),
-  'CHA': require('../assets/images/team-logos/CHA_logo.png'),
-  'CHI': require('../assets/images/team-logos/CHI_logo.png'),
-  'CLE': require('../assets/images/team-logos/CLE_logo.png'),
-  'DAL': require('../assets/images/team-logos/DAL_logo.png'),
-  'DEN': require('../assets/images/team-logos/DEN_logo.png'),
-  'DET': require('../assets/images/team-logos/DET_logo.png'),
-  'GSW': require('../assets/images/team-logos/GSW_logo.png'),
-  'HOU': require('../assets/images/team-logos/HOU_logo.png'),
-  'IND': require('../assets/images/team-logos/IND_logo.png'),
-  'LAC': require('../assets/images/team-logos/LAC_logo.png'),
-  'LAL': require('../assets/images/team-logos/LAL_logo.png'),
-  'MEM': require('../assets/images/team-logos/MEM_logo.png'),
-  'MIA': require('../assets/images/team-logos/MIA_logo.png'),
-  'MIL': require('../assets/images/team-logos/MIL_logo.png'),
-  'MIN': require('../assets/images/team-logos/MIN_logo.png'),
-  'NOP': require('../assets/images/team-logos/NOP_logo.png'),
-  'NYK': require('../assets/images/team-logos/NYK_logo.png'),
-  'OKC': require('../assets/images/team-logos/OKC_logo.png'),
-  'ORL': require('../assets/images/team-logos/ORL_logo.png'),
-  'PHI': require('../assets/images/team-logos/PHI_logo.png'),
-  'PHX': require('../assets/images/team-logos/PHX_logo.png'),
-  'POR': require('../assets/images/team-logos/POR_logo.png'),
-  'SAC': require('../assets/images/team-logos/SAC_logo.png'),
-  'SAS': require('../assets/images/team-logos/SAS_logo.png'),
-  'TOR': require('../assets/images/team-logos/TOR_logo.png'),
-  'UTA': require('../assets/images/team-logos/UTA_logo.png'),
-  'WAS': require('../assets/images/team-logos/WAS_logo.png')
-};
 
 const { width } = Dimensions.get('window');
 
@@ -50,6 +17,44 @@ class MatchCard extends Component {
     }
   }
 
+  async componentWillMount() {
+    const images = [
+      require('../assets/images/team-logos/ATL_logo.png'),
+      require('../assets/images/team-logos/BOS_logo.png'),
+      require('../assets/images/team-logos/BKN_logo.png'),
+      require('../assets/images/team-logos/CHA_logo.png'),
+      require('../assets/images/team-logos/CHI_logo.png'),
+      require('../assets/images/team-logos/CLE_logo.png'),
+      require('../assets/images/team-logos/DAL_logo.png'),
+      require('../assets/images/team-logos/DEN_logo.png'),
+      require('../assets/images/team-logos/DET_logo.png'),
+      require('../assets/images/team-logos/GSW_logo.png'),
+      require('../assets/images/team-logos/HOU_logo.png'),
+      require('../assets/images/team-logos/IND_logo.png'),
+      require('../assets/images/team-logos/LAC_logo.png'),
+      require('../assets/images/team-logos/LAL_logo.png'),
+      require('../assets/images/team-logos/MEM_logo.png'),
+      require('../assets/images/team-logos/MIA_logo.png'),
+      require('../assets/images/team-logos/MIL_logo.png'),
+      require('../assets/images/team-logos/MIN_logo.png'),
+      require('../assets/images/team-logos/NOP_logo.png'),
+      require('../assets/images/team-logos/NYK_logo.png'),
+      require('../assets/images/team-logos/OKC_logo.png'),
+      require('../assets/images/team-logos/ORL_logo.png'),
+      require('../assets/images/team-logos/PHI_logo.png'),
+      require('../assets/images/team-logos/PHX_logo.png'),
+      require('../assets/images/team-logos/POR_logo.png'),
+      require('../assets/images/team-logos/SAC_logo.png'),
+      require('../assets/images/team-logos/SAS_logo.png'),
+      require('../assets/images/team-logos/TOR_logo.png'),
+      require('../assets/images/team-logos/UTA_logo.png'),
+      require('../assets/images/team-logos/WAS_logo.png'),
+    ];
+    // const imageAssets = this.cacheImages(images);
+    const imageAssets = Asset.loadAsync(images);
+    await Promise.all([...imageAssets]);
+  }
+
   async componentDidMount() {
     await Font.loadAsync({
       'fugazone-regular': require('../assets/fonts/FugazOne-Regular.ttf'),
@@ -58,7 +63,6 @@ class MatchCard extends Component {
     this.setState({ fontLoaded: true }, () => {
       this.animation && this.animation.play();
     });
-
   }
 
   render() {

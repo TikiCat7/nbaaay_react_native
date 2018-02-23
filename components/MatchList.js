@@ -113,6 +113,9 @@ class MatchList extends Component {
           matches: this.sortMatchesByStatus(data.data),
           refreshing: false,
         }, () => {
+          if (this.state.matches.length > 0) {
+            this.listRef.scrollToIndex({ animated: false, index: 0 });
+          }
           this.props.navigation.setParams({ chosenDate: this.state.chosenDate });
         });
       });
@@ -157,6 +160,7 @@ class MatchList extends Component {
             keyExtractor={(item, index) => index}
             onRefresh={this.refreshData.bind(this)}
             refreshing={this.state.refreshing}
+              ref={(ref) => { this.listRef = ref; }}
           /> :
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
             <Text>No matches for this day :(</Text>

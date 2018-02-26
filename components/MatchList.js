@@ -81,7 +81,8 @@ class MatchList extends Component {
   }
 
   async componentDidMount() {
-    let data = await axios.get(`http://ec2-18-216-119-191.us-east-2.compute.amazonaws.com/todayMatches`);
+    // temporary measure until better solution is found
+    let data = await axios.get(`http://ec2-18-216-119-191.us-east-2.compute.amazonaws.com/matches/${moment().format('YYYYMMDD')}`);
     this.setState({
       matches: this.sortMatchesByStatus(data.data),
       show: true

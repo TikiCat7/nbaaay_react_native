@@ -66,6 +66,7 @@ class MatchCard extends Component {
   }
 
   render() {
+    const videoCount = this.props.match.youtubevideos.length;
     const vteam = this.props.match.vTeamTriCode;
     const hteam = this.props.match.hTeamTriCode;
     const matchStatus = {
@@ -111,6 +112,15 @@ class MatchCard extends Component {
         {
           this.state.fontLoaded &&
           <View style={styles.container}>
+            {
+              videoCount > 0 &&
+              [
+                <View key='1' style={{ position: 'absolute', right: '5%', top: 0, borderWidth: 10, borderTopWidth: 0, borderBottomWidth: 15, borderBottomColor: 'transparent', height: 35, zIndex: 1, borderColor: '#fc5d5d' }} />,
+                <View key='2' style={{ position: 'absolute', right: '5%', top: 0, zIndex: 2, width: 20 }}>
+                  <Text style={{ fontFamily: 'fugazone-regular', fontSize: 12, color: 'white', textAlign: 'center' }}>{videoCount}</Text>
+                </View>
+              ]
+            }
             <View style={styles.statContainer}>
             {
               this.props.match.statusNum === 2 ?
@@ -128,7 +138,7 @@ class MatchCard extends Component {
                 />
                 <Text>{matchStatus[this.props.match.statusNum]}</Text>
               </View> :
-              <Text>{matchStatus[this.props.match.statusNum]}</Text>
+                  <Text>{matchStatus[this.props.match.statusNum]}</Text>
             }
             </View>
             <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'space-around', width: '100%' }}>
@@ -154,6 +164,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     padding: 10
+    // borderWidth: 2,
+    // borderColor: 'blue'
   },
   statContainer: {
     flex: 1,

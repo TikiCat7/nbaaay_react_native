@@ -33,6 +33,8 @@ This application consumes the data and presents it in a friendly way, allowing u
 1. push notification for specific team / players
 2. news feed based on user favorite team / favorite player
 3. game thread / post game thread viewer
+4. spoiler feature (allow users to show / hide match results)
+5. better title analysis for streamable clips & associate them to matches / players
 
 # Try it!
 Use the expo app on iOS or android and open the app link https://expo.io/@watarukay/nbaaay,

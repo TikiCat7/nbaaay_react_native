@@ -1,5 +1,15 @@
-# nbaaay_react_native (v0.1)
-react native mobile code for nbaaay.
+# 🔥🏀🔥NBAAAY🔥🏀🔥 (v0.1)
+react native code for nbaaay.
+<p align="center">
+  <img src="screenshots/splash.png" width="200"/>
+  <img src="screenshots/newMatchList.png" width="200"/>
+  <img src="screenshots/mediaplayer.png" width="200"/>
+  <img src="screenshots/playerdetail.png" width="200"/>
+  <img src="screenshots/playersearch.png" width="200"/>
+  <img src="screenshots/streamable.png" width="200"/>
+  <img src="screenshots/streamablelist.png" width="200"/>
+  <img src="screenshots/videolist2.png" width="200"/>
+</p>
 
 # Why did I make this app?
 This is personal project that I made using react native and the expo (https://expo.io/) platform.
@@ -15,8 +25,8 @@ This application consumes the data and presents it in a friendly way, allowing u
 # Main features
 1. Daily match results
 2. Youtube videos for matches of the day (categorized into various types such as match highlight, player highlight, interview etc.)
-3. Game thread / post game thread from reddit.com/r/nba
-4. streamable clips posted on reddit.com/r/nba + the comments on the post itself
+3. Game thread / post game thread from https://reddit.com/r/nba
+4. streamable clips posted on https://reddit.com/r/nba + the comments on the post itself
 5. Ability to search through a player database to see compiled list of youtube videos of particular players.
 
 # Future features to be developed
@@ -24,21 +34,7 @@ This application consumes the data and presents it in a friendly way, allowing u
 2. news feed based on user favorite team / favorite player
 3. game thread / post game thread viewer
 
-# Screenshots
-<p align="center">
-  <img src="screenshots/splash.png" width="200"/>
-  <img src="screenshots/newMatchList.png" width="200"/>
-  <img src="screenshots/mediaplayer.png" width="200"/>
-  <img src="screenshots/playerdetail.png" width="200"/>
-  <img src="screenshots/playersearch.png" width="200"/>
-  <img src="screenshots/streamable.png" width="200"/>
-  <img src="screenshots/streamablelist.png" width="200"/>
-  <img src="screenshots/videolist2.png" width="200"/>
-</p>
-
-
-
-# Trying the app
+# Try it!
 Use the expo app on iOS or android and open the app link https://expo.io/@watarukay/nbaaay,
 or scan the qr code below with the expo app to run.
 <p align="center">

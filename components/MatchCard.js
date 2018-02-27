@@ -65,6 +65,10 @@ class MatchCard extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    nextProps.triggerAnimation ? this.animation && this.animation.play() : null;
+  }
+
   render() {
     const videoCount = this.props.match.youtubevideos.length;
     const vteam = this.props.match.vTeamTriCode;

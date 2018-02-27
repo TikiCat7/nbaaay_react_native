@@ -20,6 +20,7 @@ class MatchList extends Component {
       dateChanged: false,
       datePickerAnimation: new Animated.Value(0),
       allowDateToggle: true,
+      triggerAnimation: false,
     }
   }
 
@@ -113,6 +114,7 @@ class MatchList extends Component {
         this.setState({
           matches: this.sortMatchesByStatus(data.data),
           refreshing: false,
+          triggerAnimation: true,
         }, () => {
           if (this.state.matches.length > 0) {
             this.listRef.scrollToIndex({ animated: false, index: 0 });
@@ -157,7 +159,7 @@ class MatchList extends Component {
           this.state.show && this.state.matches.length > 0 ?
           <FlatList
             data={this.state.matches}
-            renderItem={({item}) => <MatchCard match={item} navigation={this.props.navigation} />}
+            renderItem={({item}) => <MatchCard match={item} navigation={this.props.navigation} triggerAnimation={this.state.triggerAnimation} />}
             keyExtractor={(item, index) => index}
             onRefresh={this.refreshData.bind(this)}
             refreshing={this.state.refreshing}

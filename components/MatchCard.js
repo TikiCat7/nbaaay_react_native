@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Font, Asset } from 'expo';
 import { View, Text, Dimensions, Image, TouchableWithoutFeedback, StyleSheet, Animated} from 'react-native';
+import { Icon } from 'native-base';
 import TRI_CODE_TO_TEAM_NAME from '../utils/triToTeam';
 import images from '../utils/teamImages';
 import Animation from 'lottie-react-native';
@@ -71,6 +72,8 @@ class MatchCard extends Component {
 
   render() {
     const videoCount = this.props.match.youtubevideos.length;
+    const gameThread = this.props.match.thread;
+    const postGameThread = this.props.match.postGameThread;
     const vteam = this.props.match.vTeamTriCode;
     const hteam = this.props.match.hTeamTriCode;
     const matchStatus = {
@@ -119,9 +122,26 @@ class MatchCard extends Component {
             {
               videoCount > 0 &&
               [
-                <View key='1' style={{ position: 'absolute', right: '5%', top: 0, borderWidth: 10, borderTopWidth: 0, borderBottomWidth: 15, borderBottomColor: 'transparent', height: 35, zIndex: 1, borderColor: '#fc5d5d' }} />,
+                <View key='1' style={{ position: 'absolute', right: '5%', top: 0, borderWidth: 10, borderTopWidth: 0, borderBottomColor: 'transparent', height: 35, zIndex: 1, borderColor: '#fc5d5d' }} />,
                 <View key='2' style={{ position: 'absolute', right: '5%', top: 0, zIndex: 2, width: 20 }}>
                   <Text style={{ fontFamily: 'fugazone-regular', fontSize: 12, color: 'white', textAlign: 'center' }}>{videoCount}</Text>
+                </View>,
+              ]
+            }
+            {
+                gameThread &&
+              [
+                <View key='3' style={{ position: 'absolute', right: '12%', top: 0, borderWidth: 10, borderTopWidth: 0, borderBottomColor: 'transparent', height: 35, zIndex: 1, borderColor: '#4f60f9' }} />,
+                <View key='4' style={{ position: 'absolute', right: '12%', top: 0, zIndex: 2, width: 20 }}>
+                  <Text style={{ fontFamily: 'fugazone-regular', fontSize: 12, color: 'white', textAlign: 'center' }}>📓</Text>
+                </View>,
+              ]
+            }
+            { postGameThread &&
+              [
+                <View key='5' style={{ position: 'absolute', right: '19%', top: 0, borderWidth: 10, borderTopWidth: 0, borderBottomColor: 'transparent', height: 35, zIndex: 1, borderColor: '#41f4a6' }} />,
+                <View key='6' style={{ position: 'absolute', right: '19%', top: 0, zIndex: 2, width: 20 }}>
+                  <Text style={{ fontFamily: 'fugazone-regular', fontSize: 12, color: 'white', textAlign: 'center' }}>🏀</Text>
                 </View>
               ]
             }
@@ -146,9 +166,9 @@ class MatchCard extends Component {
             }
             </View>
             <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'space-around', width: '100%' }}>
-              <Image source={images[this.props.match.hTeamTriCode]} style={{ width: 80, height: 80 }} />
+              <Image source={images[this.props.match.hTeamTriCode]} style={{ width: 80, height: 80, marginTop: 15 }} />
                 {scores()}
-              <Image source={images[this.props.match.vTeamTriCode]} style={{ width: 80, height: 80 }} />
+              <Image source={images[this.props.match.vTeamTriCode]} style={{ width: 80, height: 80, marginTop: 15 }} />
             </View>
           </View>
         }

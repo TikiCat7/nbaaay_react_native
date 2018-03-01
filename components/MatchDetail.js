@@ -132,7 +132,7 @@ class MatchDetail extends Component {
         <Animated.View key='1' style={{ flex: 1, maxHeight: 200, alignItems: 'center', justifyContent: 'center'}}>
           <Animated.View style={{ flex: 1, height: 50, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
             <View style={{ alignItems: 'center', justifyContent: 'center',  flex: 1 }}>
-              <MatchCard match={this.props.navigation.state.params.match} navigation={this.props.navigation} triggerAnimation={this.props.navigation.state.params.triggerAnimation} presentational />
+              <MatchCard match={this.state.match} navigation={this.props.navigation} triggerAnimation={this.props.navigation.state.params.triggerAnimation} presentational />
               <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 {
                   this.state.match.thread ?

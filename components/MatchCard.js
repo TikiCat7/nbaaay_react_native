@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Font, Asset } from 'expo';
 import { View, Text, Dimensions, Image, TouchableWithoutFeedback, StyleSheet, Animated} from 'react-native';
 import { Icon } from 'native-base';
+import moment from 'moment';
 import TRI_CODE_TO_TEAM_NAME from '../utils/triToTeam';
 import images from '../utils/teamImages';
 import Animation from 'lottie-react-native';
@@ -77,7 +78,7 @@ class MatchCard extends Component {
     const vteam = this.props.match.vTeamTriCode;
     const hteam = this.props.match.hTeamTriCode;
     const matchStatus = {
-      1: 'Not Started',
+      1: `Start time: ${moment(this.props.match.startTimeUTCString).utcOffset(0, true).format('HH:mm')}`,
       2: 'Live',
       3: 'Final'
     }

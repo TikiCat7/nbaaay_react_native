@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet, Animated, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Animated, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import CompactYoutubeCard from './CompactYoutubeCard';
 import {Icon} from 'native-base'
 import axios from 'axios';
 import images from '../utils/teamImages';
+import MatchCard from './MatchCard';
+
+let { width } = Dimensions.get('window');
 
 class MatchDetail extends Component {
 
@@ -42,11 +45,6 @@ class MatchDetail extends Component {
     return {
       title: `Match Detail`,
       headerStyle: {
-        transform: [
-          {
-            translateY: params.animatedValue ? params.animatedValue : 0,
-          }
-        ],
         // height: 50,
       },
     }
@@ -127,19 +125,34 @@ class MatchDetail extends Component {
 
     return (
 
-    <Animated.View style={[{ flex: 1 }, translateStyle(translateY)]}>
+    <Animated.View style={[{ flex: 1 }]}>
       {
         this.state.show && this.state.fontLoaded &&
         [
-        <Animated.View key='1' style={{ flex: 1, maxHeight: maxHeight, alignItems: 'center', justifyContent: 'center' ,backgroundColor: 'lightgrey', borderWidth: 2, borderColor: 'red'}}>
-          <Animated.View style={{ flex: 1, height: 50, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'blue', width: width}}>
-            <View style={{ alignItems: 'center', justifyContent: 'center',  flex: 1, borderWidth: 2, borderColor: 'green' }}>
-              <View style={{ flexDirection: 'row' }}>
-                <Image source={images[this.state.match.hTeamTriCode]} style={{ width: 100, height: 100 }} />
-                <Image source={images[this.state.match.vTeamTriCode]} style={{ width: 100, height: 100 }} />
+        <Animated.View key='1' style={{ flex: 1, maxHeight: 200, alignItems: 'center', justifyContent: 'center'}}>
+          <Animated.View style={{ flex: 1, height: 50, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center',  flex: 1 }}>
+              <MatchCard match={this.props.navigation.state.params.match} navigation={this.props.navigation} triggerAnimation={this.props.navigation.state.params.triggerAnimation} presentational />
+              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                {
+                  this.state.match.thread ?
+                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Thread', { threadId: this.state.match.thread.postId, type: 'thread', typeText: 'Game Thread', hTeamTri: this.state.match.hTeamTriCode, vTeamTri: this.state.match.vTeamTriCode })}>
+                      <View style={styles.threadButton}>
+                        <Text style={{ textAlign: 'center', paddingLeft: 5, paddingRight: 5, color: 'white' }}>Match Thread</Text>
+                      </View>
+                    </TouchableWithoutFeedback> :
+                    null
+                }
+                {
+                  this.state.match.postGameThread ?
+                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Thread', { threadId: this.state.match.postGameThread.postId, type: 'postGameThread', typeText: 'Post Game Thread', hTeamTri: this.state.match.hTeamTriCode, vTeamTri: this.state.match.vTeamTriCode })}>
+                      <View style={styles.postGameThreadButton}>
+                        <Text style={{ textAlign: 'center', paddingLeft: 5, paddingRight: 5, color: 'white' }}>Post Game Thread</Text>
+                      </View>
+                    </TouchableWithoutFeedback> :
+                    null
+                }
               </View>
-              <Text>Match Thread: {this.state.match.thread ? 'Exists' : 'Not Found'}</Text>
-              <Text>Post Game Thread: {this.state.match.postGameThread ? 'Exists' : 'Not Found'}</Text>
             </View>
           </Animated.View>
         </Animated.View>,
@@ -165,7 +178,7 @@ class MatchDetail extends Component {
             }
             scrollEventThrottle={16}
             data={this.state.youtubevideos}
-            onScrollEndDrag={this.resetHeaderPos.bind(this)}
+            // onScrollEndDrag={this.resetHeaderPos.bind(this)}
             renderItem={({item}) => <CompactYoutubeCard navigation={this.props.navigation} key={item.videoId} video={item} />}
             keyExtractor={(item, index) => index}
           />
@@ -185,6 +198,19 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
 
   },
+  threadButton: {
+    backgroundColor: '#7AF0AC',
+    // width: '100%',
+    height: 20,
+    borderRadius: 5,
+    marginRight: 20
+  },
+  postGameThreadButton: {
+    backgroundColor: '#5163F0',
+    // width: '100%',
+    height: 20,
+    borderRadius: 5,
+  }
 });
 
 export default MatchDetail;

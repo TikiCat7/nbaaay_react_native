@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, WebView  } from 'react-native';
 import moment from 'moment';
 import { Icon } from 'native-base';
 
-class RedditComment extends Component {
+class RedditComment extends PureComponent {
   render() {
     return (
       <View style={styles.container}>

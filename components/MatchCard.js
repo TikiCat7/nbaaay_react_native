@@ -113,7 +113,7 @@ class MatchCard extends Component {
 
     return (
     <TouchableWithoutFeedback onPress={() => {
-      this.props.navigation.navigate('MatchDetail', {matchId: this.props.match.matchId})
+        this.props.presentational ? null : this.props.navigation.navigate('MatchDetail', { matchId: this.props.match.matchId, match: this.props.match, triggerAnimation: this.props.triggerAnimation})
     }}>
       <View style={{ flex: 1, width: width}}>
         {

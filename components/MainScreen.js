@@ -19,6 +19,7 @@ import Streamable from './Streamable';
 import Player from './Player';
 import PlayerSearch from './PlayerSearch';
 import DateModal from './DateModal';
+import Thread from './Thread';
 
 class MainScreen extends Component {
 
@@ -82,7 +83,13 @@ const MatchStack = StackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: 'Video 📺'
     })
-  }
+  },
+  Thread: {
+    screen: Thread,
+    navigationOptions: {
+      header: null,
+    }
+  },
 });
 
 const AppTabNavigator = TabNavigator({
